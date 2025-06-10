@@ -25,6 +25,7 @@ public class Raycast : MonoBehaviour
         Vector3 forward = transform.TransformDirection(Vector3.forward)*length;
         if(Physics.Raycast(ray, out hit, length)){
             Debug.DrawRay(transform.position,transform.TransformDirection(Vector3.forward)*hit.distance,Color.yellow);       
+             
              OnHit();
         }
         else{
