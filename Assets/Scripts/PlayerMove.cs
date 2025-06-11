@@ -4,14 +4,18 @@ using UnityEngine;
 
 public class PlayerMove: MonoBehaviour
 {
+    
 
     public Transform groundCheck;
     public float groudDistance = 0.4f;
     public LayerMask grounMask;
 
+    public Raycast ray_cast; //check if player is interacing;
+
     public float jumpHeight = 3f;
 
     bool isGrounded;
+    public bool interacting; //check if the player is interacting
 
 
     public CharacterController controller;
@@ -24,7 +28,8 @@ public class PlayerMove: MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if(ray_cast.locked) interacting = true;
+        else interacting = false;
         isGrounded = Physics.CheckSphere(groundCheck.position, groudDistance, grounMask);
 
         if(isGrounded == true && velocity.y < 0)
@@ -37,15 +42,15 @@ public class PlayerMove: MonoBehaviour
 
         Vector3 move = transform.right * x + transform.forward * z;
 
-        controller.Move(move * speed * Time.deltaTime);
-
         if(Input.GetButtonDown("Jump") && isGrounded)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
 
-        velocity.y += gravity * Time.deltaTime;
-
-        controller.Move(velocity * Time.deltaTime);
+        if (!interacting){
+            controller.Move(move * speed * Time.deltaTime);
+            velocity.y += gravity * Time.deltaTime;
+            controller.Move(velocity * Time.deltaTime);
+        }
     }
 }
