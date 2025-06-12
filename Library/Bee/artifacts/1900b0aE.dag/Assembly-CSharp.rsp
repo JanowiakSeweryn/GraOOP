@@ -347,6 +347,7 @@
 "Assets/Scripts/buttons/OpenPanel.cs"
 "Assets/Scripts/CameraMove.cs"
 "Assets/Scripts/FixCamera.cs"
+"Assets/Scripts/FixPositionInteract.cs"
 "Assets/Scripts/MauseMove.cs"
 "Assets/Scripts/PlayerMove.cs"
 "Assets/Scripts/PressButton.cs"
