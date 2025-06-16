@@ -1,27 +1,41 @@
-# Unity generated files
-[Ll]ibrary/
-[Tt]emp/
-[Oo]bj/
+###
+# Unity folders and files
+###
+[Aa]ssets/AssetStoreTools*
 [Bb]uild/
-[Bb]uilds/
-[Ll]ogs/
-[Uu]serSettings/
-MemoryCaptures/
+[Ll]ibrary/
+[Ll]ocal[Cc]ache/
+[Oo]bj/
+[Tt]emp/
+[Uu]nityGenerated/
+# file on crash reports
+sysinfo.txt
+# Unity3D generated meta files
+*.pidb.meta
+
+###
+# VS/MD solution and project files
+###
+[Ee]xportedObj/
+*.booproj
 *.csproj
-*.unityproj
 *.sln
 *.suo
-*.tmp
+*.svd
+*.unityproj
 *.user
 *.userprefs
 *.pidb
-*.booproj
-*.svd
-
-# Rider and VSCode
-.idea/
-.vscode/
-
-# OS generated
 .DS_Store
+
+###
+# OS generated
+###
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+ehthumbs.db
 Thumbs.db
