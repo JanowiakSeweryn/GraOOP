@@ -29,7 +29,7 @@ public class Raycast : MonoBehaviour
         }
         else{
             Debug.DrawRay(transform.position,transform.TransformDirection(Vector3.forward)*hit.distance,Color.red);
-            Debug.Log("not hitting!");
+            // blagam nie wstawiajcie do kodu wysylania debugloga w kazdej klatce Debug.Log("not hitting!");
         }
 
     Debug.DrawRay(transform.position,forward,Color.green,10f);
