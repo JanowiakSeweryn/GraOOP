@@ -882,7 +882,8 @@ MonoBehaviour:
   interacting: 0
   controller: {fileID: 321603713}
   speed: 5
-  sprint_speed: 1.75
+  sprint_speed: 2
+  speed_container: 5
   gravity: -19.62
 --- !u!143 &321603713
 CharacterController:

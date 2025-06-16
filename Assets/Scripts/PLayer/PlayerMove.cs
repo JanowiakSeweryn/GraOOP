@@ -23,9 +23,9 @@ public class PlayerMove: MonoBehaviour
 
     public CharacterController controller;
 
-    public float speed = 12f;
+    public float speed ;
     public float sprint_speed = 3.0f; 
-    float speed_container = 12f; //the same as speed, hold value to recover from speed;
+    public float speed_container ; //the same as speed, hold value to recover from speed;
     public float gravity = -19.62f;
 
     Vector3 velocity;
