@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - UI_point1
+  - UI_point2
   layers:
   - Default
   - TransparentFX
