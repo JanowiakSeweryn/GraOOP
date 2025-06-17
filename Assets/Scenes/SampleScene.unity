@@ -121,7 +121,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: adf8d5fac62c4a943bde074bf038b564, type: 2}
 --- !u!1 &22582070
 GameObject:
   m_ObjectHideFlags: 0
@@ -1071,7 +1071,7 @@ GameObject:
   - component: {fileID: 321603716}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1455,6 +1455,27 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4856056796605306035, guid: 86fb9da507415954ba743532e29ac5ba, type: 3}
   m_PrefabInstance: {fileID: 1469871411}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &639757852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 639757851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5241346199b0d534d8e9523462cfb10b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 0}
+  speed: 0.4
+  anim: {fileID: 0}
+  player: {fileID: 0}
+  currentState: 0
+  colony: {fileID: 0}
+  MoveProbability: 50
+  Destination: {x: 0, y: 0, z: 0}
+  minMoveDistance: 0.2
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0

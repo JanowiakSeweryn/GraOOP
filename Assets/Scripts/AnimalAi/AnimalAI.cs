@@ -6,9 +6,10 @@ using UnityEngine.AI;
 public class AnimalAI : MonoBehaviour
 {
     
-    [SerializeField] protected NavMeshAgent agent;
+    public NavMeshAgent agent;
     [SerializeField] protected float speed;
-    [SerializeField] protected Animator anim; 
+    [SerializeField] protected Animator anim;
+    public GameObject player; 
 
     public virtual void Start()
     {
@@ -17,6 +18,7 @@ public class AnimalAI : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         if (agent == null) { Debug.Log(this.name + "has no NavMeshAgent attached"); }
         agent.speed = speed;
+        player = GameObject.FindGameObjectWithTag("Player"); 
 
 
     }
