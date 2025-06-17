@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Target : MonoBehaviour, IDamagable
+public class Target : MonoBehaviour,  IDamagable
 {
 
     private float health = 100f;

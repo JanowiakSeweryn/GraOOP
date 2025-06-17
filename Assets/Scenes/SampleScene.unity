@@ -271,6 +271,7 @@ GameObject:
   - component: {fileID: 24889167}
   - component: {fileID: 24889166}
   - component: {fileID: 24889165}
+  - component: {fileID: 24889169}
   m_Layer: 0
   m_Name: Target
   m_TagString: Untagged
@@ -356,6 +357,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &24889169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 24889164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d89afc0b993414498b543c28caeaab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &29461749
 GameObject:
   m_ObjectHideFlags: 0
@@ -1084,7 +1097,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 321603709}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 500, y: -11.98205, z: 196.2}
+  m_LocalPosition: {x: 500, y: -11.15, z: 196.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2836,6 +2849,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1868944324}
+  - component: {fileID: 1868944325}
   m_Layer: 0
   m_Name: AssaultRiffle
   m_TagString: Untagged
@@ -2859,6 +2873,20 @@ Transform:
   m_Father: {fileID: 1474380482}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1868944325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1868944323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96f29513ad2a53148a8182a63eaf5550, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gunData: {fileID: 11400000, guid: 8a0300e9e27f83348a498da42a06e4a2, type: 2}
+  muzzle: {fileID: 1605578901}
 --- !u!1 &1903599082
 GameObject:
   m_ObjectHideFlags: 0
