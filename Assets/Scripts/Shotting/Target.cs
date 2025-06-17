@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Target : MonoBehaviour,  IDamagable
+
 {
 
     private float health = 100f;

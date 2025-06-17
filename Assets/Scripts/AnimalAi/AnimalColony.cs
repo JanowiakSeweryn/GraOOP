@@ -1,16 +1,17 @@
-using System.Collections; 
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class AnimalColony : MonoBehaviour // skrypt dla stada osobników 
+public class AnimalColony : MonoBehaviour
 {
     public List<GameObject> Individuals = new List<GameObject>();
     static Vector3 center;
-    float GenerationRadius = 10f; 
+    float GenerationRadius = 10f;
 
-    public virtual void Alert() {
-        Debug.Log("KURWA SPIERDALAMY"); 
+    public virtual void Alert()
+    {
+        Debug.Log("KURWA SPIERDALAMY");
     }
 
     public Vector3 GenerateNewDestination()
@@ -33,16 +34,24 @@ public class AnimalColony : MonoBehaviour // skrypt dla stada osobników
         }
 
         Debug.LogWarning("Nie znaleziono punktu na NavMesh po " + maxTries + " próbach. Zwracam center.");
-        return center; // fallback w razie niepowodzenia
+        return center;
     }
 
     public void AlertColony()
     {
-        foreach(GameObject animal in Individuals)
+        foreach (GameObject animal in Individuals)
         {
-            Alert(); 
+            HerdAnimalAI ai = animal.GetComponent<HerdAnimalAI>();
+            if (ai != null)
+            {
+                Vector3 fleeTarget = GenerateFleeDestination(ai.transform, animal.transform.position);
+                ai.SetState(AnimalAI.AnimalState.Flee); // zak³adam, ¿e masz tak¹ metodê — jeœli nie, podmienimy
+            }
         }
+
+        Alert();
     }
+
     public Vector3 GetAveragePosition()
     {
         if (Individuals.Count == 0) return Vector3.zero;
@@ -69,25 +78,39 @@ public class AnimalColony : MonoBehaviour // skrypt dla stada osobników
         center = GetAveragePosition();
         foreach (GameObject animal in Individuals)
         {
-            animal.GetComponent<HerdAnimalAI>().SetState(AnimalAI.AnimalState.Walk); 
+            animal.GetComponent<HerdAnimalAI>().SetState(AnimalAI.AnimalState.Walk);
         }
     }
 
-    public Vector3 GenerateFleeDestination(Transform playerTransform)
+
+    public Vector3 GenerateFleeDestination(Transform playerTransform, Vector3 animalPosition)
     {
         float fleeDistance = 2 * GenerationRadius;
-        Vector3 directionAwayFromPlayer = (transform.position - playerTransform.position).normalized;
 
-        // Mo¿emy dodaæ lekki chaos, ¿eby nie wszyscy uciekali idealnie liniowo
+        Vector3 toAnimal = animalPosition - playerTransform.position;
+        Vector3 playerForward = playerTransform.forward;
+        Vector3 playerRight = Vector3.Cross(Vector3.up, playerForward).normalized;
+
+        float side = Mathf.Sign(Vector3.Dot(toAnimal, playerRight));
+
+        float baseAngle = side > 0 ? 90f : -90f;
+
+
+        int seed = Mathf.FloorToInt(animalPosition.x * 1000 + animalPosition.z * 1000);
+        Random.InitState(seed);
+        float angleOffset = Random.Range(-30f, 30f);
+        float finalAngle = baseAngle + angleOffset;
+
+        Quaternion rotation = Quaternion.AngleAxis(finalAngle, Vector3.up);
+        Vector3 fleeDirection = rotation * playerForward;
+
         Vector3 randomOffset = new Vector3(
-            Random.Range(-10f, 10f),
+            Random.Range(-0.5f, 0.5f),
             0f,
-            Random.Range(-10f, 10f)
-        ).normalized * Random.Range(0f, 2f); // losowy chaos
+            Random.Range(-0.5f, 0.5f)
+        );
 
-        Vector3 fleeDirection = (directionAwayFromPlayer + randomOffset).normalized;
-
-        Vector3 targetPosition = transform.position + fleeDirection * fleeDistance;
+        Vector3 targetPosition = animalPosition + fleeDirection.normalized * fleeDistance + randomOffset;
 
         NavMeshHit hit;
         if (NavMesh.SamplePosition(targetPosition, out hit, 3f, NavMesh.AllAreas))
@@ -96,26 +119,17 @@ public class AnimalColony : MonoBehaviour // skrypt dla stada osobników
         }
         else
         {
-            return transform.position; // fallback — zostaje w miejscu jeœli brak dobrego punktu
+            return animalPosition; // fallback
         }
     }
 
-
-
     public void Start()
     {
-        
     }
 
     void Update()
     {
-        Debug.DrawLine(center, center + Vector3.up * 2, Color.green); 
-        DrawDiestance(); 
-
-        
+        Debug.DrawLine(center, center + Vector3.up * 2, Color.green);
+        DrawDiestance();
     }
-
-    
 }
-
-
