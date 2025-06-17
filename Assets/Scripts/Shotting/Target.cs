@@ -10,7 +10,7 @@ public class Target : MonoBehaviour,  IDamagable
     public void Damage(float damage)
     {
         health -= damage;
-        Debug.Log("auc auc auc");
+        Debug.Log(health);
         if(health < 0 )
         {
             Destroy(gameObject);
