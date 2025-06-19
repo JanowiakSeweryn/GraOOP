@@ -42,7 +42,7 @@ namespace Polyperfect.Common
     {
       if (!instance)
       {
-        Debug.LogError("No Audio Manager found in the scene.");
+        //Debug.LogError("No Audio Manager found in the scene.");
         return;
       }
 

@@ -26,7 +26,8 @@ public class HerdAnimalAI : AnimalAI
         {
             SeeDanger();
         }
-        Debug.DrawLine(player.transform.position, player.transform.position + Vector3.up * 5f, Color.yellow);
+        
+        Debug.DrawLine(transform.position, player.transform.position, Color.yellow);
 
     }
 
