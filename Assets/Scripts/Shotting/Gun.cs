@@ -2,11 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
 public class Gun : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private GunData gunData;
     [SerializeField] private Transform muzzle;
+
+    float detectionRadius = 30f;
+    Vector3 gunPos;
 
     float timeSinceLastShot;
 
@@ -54,6 +59,19 @@ public class Gun : MonoBehaviour
                 gunData.currentAmmo--;
                 timeSinceLastShot = 0;
                 OnGunShot();
+
+                
+                gunPos = transform.position;
+
+                HerdAnimalAI[] allAnimals = FindObjectsOfType<HerdAnimalAI>();
+
+                foreach (var animal in allAnimals)
+                {
+                    if (Vector3.Distance(animal.transform.position, gunPos) <= detectionRadius)
+                    {
+                        animal.SeeDanger();
+                    }
+                }
             }
         }
     }
