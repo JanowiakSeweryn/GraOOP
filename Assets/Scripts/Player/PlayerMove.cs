@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class PlayerMove: MonoBehaviour
 {
-    
+
+    public Transform playerbody;
+
+    private Vector3 originalScale;
+    private float originalHeight;
 
     public Transform groundCheck;
 
@@ -18,6 +22,8 @@ public class PlayerMove: MonoBehaviour
     public float jumpHeight = 3f;
 
     bool isGrounded;
+    bool isCrouching = false;
+
     public bool interacting; //check if the player is interacting
 
 
@@ -25,7 +31,9 @@ public class PlayerMove: MonoBehaviour
 
     public float speed ;
     public float speed_container ; //the same as speed, hold value to recover from speed;
-    public float sprint_speed = 1.89f; 
+    public float sprint_speed = 1.89f;
+    public float crouchSpeed = 5f;
+
     public float gravity = -19.62f;
 
     Vector3 velocity;
@@ -48,6 +56,11 @@ public class PlayerMove: MonoBehaviour
     }
 
     // Update is called once per frame
+    private void Start()
+    {
+        originalHeight = playerbody.localScale.y;
+        originalScale = playerbody.localScale;
+    }
     void Update()
     {
         if(ray_cast.locked) interacting = true;
@@ -82,7 +95,21 @@ public class PlayerMove: MonoBehaviour
             velocity.y += gravity * Time.deltaTime;
             controller.Move(velocity * Time.deltaTime);
         }
-        
+        if (Input.GetKeyDown(KeyCode.LeftControl) && isCrouching == false)
+        {
+            isCrouching = true;
+            controller.height = controller.height / 2f;
+            Debug.Log("Pomniejszono");
+            playerbody.localScale = new Vector3(originalScale.x, originalScale.y / 2f, originalScale.z);
+            velocity.y = -2000f;
+        }
+        else if (Input.GetKeyUp(KeyCode.LeftControl) && isCrouching == true)
+        {
+            isCrouching = false;
+            controller.height = originalHeight * 2f;
+            playerbody.localScale = originalScale;
+        }
+
     }
 
 }
