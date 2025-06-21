@@ -2729,7 +2729,7 @@ MonoBehaviour:
   ColonyName: PINGWINY_TEST
   spawnShape: 0
   prefab: {fileID: 639757851}
-  numberOfIndividuals: 10
+  numberOfIndividuals: 80
   terrain: {fileID: 2046936758}
   radius: 39.11
   width: 10
