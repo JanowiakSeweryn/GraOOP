@@ -8,10 +8,17 @@ public class MauseMove : MonoBehaviour
     public Transform orientation;  //gracz
 
     public Raycast ShowUI;
+    public PauseGame pause_game;
 
     
     private float x_rot = 0f;
     private float y_rot = 0f;
+
+    bool UnlockCursor(){
+        if(ShowUI.locked || pause_game.isPaused) return true;
+        else return false;
+    
+    }
 
     void Start()
     {
@@ -21,7 +28,7 @@ public class MauseMove : MonoBehaviour
 
     void Update()
     {
-        if (!ShowUI.locked)
+        if (!UnlockCursor())
         {   
             Cursor.lockState = CursorLockMode.Locked;  // Hides and locks cursor to center
             Cursor.visible = false;
@@ -42,5 +49,6 @@ public class MauseMove : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;  // Hides and locks cursor to center
             Cursor.visible = true;
         }
+
         }
 }
