@@ -204,7 +204,4 @@ public class HerdAnimalAI : AnimalAI
             return transform.position;
         }
     }
-
-
-
 }

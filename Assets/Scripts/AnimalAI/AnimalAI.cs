@@ -156,9 +156,4 @@ public class AnimalAI : MonoBehaviour
         }
     }
 
-
-
-    
-
-    
 }

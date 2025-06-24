@@ -9,10 +9,7 @@ public class AnimalColony : MonoBehaviour
     static Vector3 center;
     float GenerationRadius = 10f;
 
-    public virtual void Alert()
-    {
-        Debug.Log("KURWA SPIERDALAMY");
-    }
+ 
 
     public Vector3 GenerateNewDestination()
     {
@@ -49,7 +46,6 @@ public class AnimalColony : MonoBehaviour
             }
         }
 
-        Alert();
     }
 
     public Vector3 GetAveragePosition()
@@ -122,6 +118,19 @@ public class AnimalColony : MonoBehaviour
             return animalPosition; // fallback
         }
     }
+
+    public void RemoveFromColony(GameObject gameObject)
+    {
+        if (Individuals.Contains(gameObject))
+        {
+            Individuals.Remove(gameObject);
+        }
+        else
+        {
+            Debug.LogWarning("Próba usuniêcia obiektu, którego nie ma na liœcie.");
+        }
+    }
+
 
     public void Start()
     {
