@@ -20,10 +20,7 @@ public class ColonyGenerator : MonoBehaviour
     [Header("Circle parameters")]
     public float radius = 10f;
 
-    // Parametry prostok¹ta
-    [Header("Ractangle parameters")]
-    public float width = 10f;
-    public float height = 10f;
+    
     [SerializeField]
     private List<GameObject> spawnedIndividuals = new List<GameObject>();
     [SerializeField]
@@ -37,16 +34,7 @@ public class ColonyGenerator : MonoBehaviour
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.green;
-         
-        if (spawnShape == SpawnShape.Circle)
-        {
-            Gizmos.DrawWireSphere(transform.position, radius);
-        }
-        else if (spawnShape == SpawnShape.Rectangle)
-        {
-            Vector3 size = new Vector3(width, 0.1f, height);
-            Gizmos.DrawWireCube(transform.position, size);
-        }
+        Gizmos.DrawWireSphere(transform.position, radius);
     }
     float minDistanceBetweenIndividuals = 1;
   
