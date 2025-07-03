@@ -15,19 +15,19 @@ public class FixPositionInteract : MonoBehaviour
     void Update()
     {   
 
-        if(ray_cast.locked){
+       // if(ray_cast.locked){
 
-            if(!set){
-            fix_pos =  new Vector3(0f,fix_y,fix_z);
-            Obj_global_pos = ray_cast.hit_obj.transform.position ;
-             Fixed = Obj_global_pos - fix_pos;
-             transform.position = Fixed;
-            }
-             set = true;
+         //   if(!set){
+          //  fix_pos =  new Vector3(0f,fix_y,fix_z);
+          //  Obj_global_pos = ray_cast.hit_obj.transform.position ;
+          //   Fixed = Obj_global_pos - fix_pos;
+          //   transform.position = Fixed;
+          //  }
+          //   set = true;
 
-        }
-        else{
-            set = false;
-        }
+       // }
+      //  else{
+        //    set = false;
+       // }
     }
 }

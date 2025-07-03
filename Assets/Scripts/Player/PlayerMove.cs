@@ -63,8 +63,8 @@ public class PlayerMove: MonoBehaviour
     }
     void Update()
     {
-        if(ray_cast.locked) interacting = true;
-        else interacting = false;
+       // if(ray_cast.locked) interacting = true;
+       // else interacting = false;
         isGrounded = Physics.CheckSphere(groundCheck.position, groudDistance, grounMask);
 
         if(isGrounded == true && velocity.y < 0)
