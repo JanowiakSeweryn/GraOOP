@@ -1,3 +1,6 @@
+
+//show and display the [e] symbol if the object is in defined position (show_dist)
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
