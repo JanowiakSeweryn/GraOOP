@@ -4,7 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - UI_point1
+  - upgrade_menu
+  - dialog
   layers:
   - Default
   - TransparentFX

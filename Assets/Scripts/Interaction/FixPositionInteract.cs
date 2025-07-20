@@ -23,7 +23,7 @@ public class FixPositionInteract : MonoBehaviour
             Obj_global_pos = ray_cast.hit_obj.transform.position ;
             Fixed = Obj_global_pos - fix_pos;
             transform.position = Fixed;
-            
+
            }
             set = true;
 
